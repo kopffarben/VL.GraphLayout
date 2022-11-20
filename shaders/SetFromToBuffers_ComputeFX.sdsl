@@ -1,0 +1,23 @@
+[Summary("Increments values in a buffer.")]
+shader SetFromToBuffers_ComputeFX : ComputeShaderBase
+{
+    StructuredBuffer<float3>    nodeBuffer; 
+    StructuredBuffer<int2>      edgeBuffer; 
+     
+    RWStructuredBuffer<float3>  fromBuffer;
+    RWStructuredBuffer<float3>  toBuffer;
+
+    override void Compute()
+    {
+        uint index = streams.DispatchThreadId.x;
+
+        uint numNodes, numEdges, stride;
+        nodeBuffer.GetDimensions(numNodes,stride); 
+	    edgeBuffer.GetDimensions(numEdges,stride);
+
+        if (index>numEdges) return;
+
+        fromBuffer[index] = nodeBuffer[(uint)edgeBuffer[index].x];
+        toBuffer[index]   = nodeBuffer[(uint)edgeBuffer[index].y];
+    }
+};

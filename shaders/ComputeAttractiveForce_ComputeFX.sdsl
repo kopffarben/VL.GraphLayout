@@ -1,0 +1,65 @@
+[Summary("Increments values in a buffer.")]
+shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase
+{
+    float3  area        = float3(10.0, 10.0, 10.0);
+    float   damping     = 0.01;
+    
+    StructuredBuffer<float3>    nodeBuffer; 
+    StructuredBuffer<int2>      edgeBuffer; 
+     
+    RWByteAddressBuffer         dispBuffer;
+
+
+
+    override void Compute()
+    {
+        uint index = streams.DispatchThreadId.x;
+
+        uint numNodes, numEdges, stride;
+        nodeBuffer.GetDimensions(numNodes,stride); 
+	    edgeBuffer.GetDimensions(numEdges,stride);
+
+        if (index>numEdges) return;
+
+        if (damping > 0.001)
+        {
+            float3 K = float3(sqrt((area.x*area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z*area.z)/((float)numNodes)));
+
+            float3 edgeDelta=nodeBuffer[(uint)(edgeBuffer[index].y)]-nodeBuffer[edgeBuffer[index].x];
+            float  edgeDist=length(edgeDelta);
+            float3 nEdgeDelta = normalize(edgeDelta);
+            if (IsNaN(nEdgeDelta.x) || IsNaN(nEdgeDelta.y) || IsNaN(nEdgeDelta.z))
+            {   
+                nEdgeDelta = float3(0,0,0);
+            }
+            float3 disp= nEdgeDelta * edgeDist*edgeDist/K;
+
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].x) * 3 + 0) * 4, disp.x);
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].x) * 3 + 1) * 4, disp.y);
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].x) * 3 + 2) * 4, disp.z);
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].y) * 3 + 0) * 4, disp.x * -1.0);
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].y) * 3 + 1) * 4, disp.y * -1.0);
+            InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].y) * 3 + 2) * 4, disp.z * -1.0);
+        }
+    }
+
+    void InterlockedAddFloat(RWByteAddressBuffer buf, uint addr, float value)
+    {
+        uint i_val = asuint(value);
+        uint tmp0 = 0;
+        uint tmp1;
+        while(true)
+        {
+            buf.InterlockedCompareExchange(addr, tmp0, i_val, tmp1);
+            if(tmp1 == tmp0)
+                break;
+            tmp0 = tmp1;
+            i_val = asuint(value + asfloat(tmp1));
+        }
+    }
+
+    bool IsNaN(float x)
+    {
+        return (asuint(x) & 0x7fffffff) > 0x7f800000;
+    }
+};

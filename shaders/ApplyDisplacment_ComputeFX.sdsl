@@ -1,0 +1,34 @@
+[Summary("Increments values in a buffer.")]
+shader ApplyDisplacment_ComputeFX : ComputeShaderBase
+{
+    float	maxDist             = 1.0;   
+    float   damping             = 0.01;
+
+    RWStructuredBuffer<float3>  nodeBuffer;
+    RWStructuredBuffer<float3>  dispBuffer;
+
+    override void Compute()
+    {
+        uint index = streams.DispatchThreadId.x;
+
+        uint numNodes, stride;
+        nodeBuffer.GetDimensions(numNodes,stride); 
+
+        if (index>numNodes) return;
+
+        float3 nDisp = normalize(dispBuffer[index]);
+        if (IsNaN(nDisp.x) || IsNaN(nDisp.y) || IsNaN(nDisp.z))
+        {   
+            
+        }
+        else
+        {
+            nodeBuffer[index] = nodeBuffer[index] + (nDisp*min(length(dispBuffer[index]),maxDist) * damping);
+        }
+    }
+
+    bool IsNaN(float x)
+    {
+        return (asuint(x) & 0x7fffffff) > 0x7f800000;
+    }
+};
