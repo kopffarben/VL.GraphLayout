@@ -21,8 +21,6 @@
     <!-- <file src="..\src\Whatever\bin\Release\netstandard2.0\Whatever.dll" target="lib\netstandard2.0" exclude="" /> -->
   </files>
   <dependencies>
-    <group>
       <dependency id=" VL.Fuse" version="0.2.3" />
-    </group>
   </dependencies>
 </package>
