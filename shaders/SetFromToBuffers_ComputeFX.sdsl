@@ -1,8 +1,8 @@
 [Summary("Increments values in a buffer.")]
-shader SetFromToBuffers_ComputeFX : ComputeShaderBase
+shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 {
     StructuredBuffer<float3>    nodeBuffer; 
-    StructuredBuffer<int2>      edgeBuffer; 
+    StructuredBuffer<EdgeBuffer>      edgeBuffer; 
      
     RWStructuredBuffer<float3>  fromBuffer;
     RWStructuredBuffer<float3>  toBuffer;
@@ -17,7 +17,7 @@ shader SetFromToBuffers_ComputeFX : ComputeShaderBase
 
         if (index>numEdges) return;
 
-        fromBuffer[index] = nodeBuffer[(uint)edgeBuffer[index].x];
-        toBuffer[index]   = nodeBuffer[(uint)edgeBuffer[index].y];
+        fromBuffer[index] = nodeBuffer[(uint)edgeBuffer[index].fromIndex];
+        toBuffer[index]   = nodeBuffer[(uint)edgeBuffer[index].toIndex];
     }
 };

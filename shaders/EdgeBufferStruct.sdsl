@@ -1,0 +1,9 @@
+shader EdgeBufferStruct
+{   
+    struct EdgeBuffer
+    {
+        int     fromIndex;
+        int     toIndex;
+        float   weight; 
+    };
+};
