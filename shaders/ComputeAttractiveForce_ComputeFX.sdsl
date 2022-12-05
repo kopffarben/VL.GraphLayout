@@ -5,6 +5,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
     float   damping     = 0.01;
     
     StructuredBuffer<float3>        nodeBuffer; 
+    StructuredBuffer<float>         weightBuffer; 
     StructuredBuffer<EdgeBuffer>    edgeBuffer; 
      
     RWByteAddressBuffer             dispBuffer;
@@ -15,9 +16,10 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
     {
         uint index = streams.DispatchThreadId.x;
 
-        uint numNodes, numEdges, stride;
+        uint numNodes, numEdges, numWeights, stride;
         nodeBuffer.GetDimensions(numNodes,stride); 
 	    edgeBuffer.GetDimensions(numEdges,stride);
+        weightBuffer.GetDimensions(numWeights,stride);
 
         if (index>numEdges) return;
 
@@ -32,7 +34,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
             {   
                 nEdgeDelta = float3(0,0,0);
             }
-            float3 disp= edgeBuffer[index].weight * nEdgeDelta * edgeDist*edgeDist/K;
+            float3 disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K;
 
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 0) * 4, disp.x);
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 1) * 4, disp.y);

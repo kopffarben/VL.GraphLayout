@@ -4,6 +4,6 @@ shader EdgeBufferStruct
     {
         int     fromIndex;
         int     toIndex;
-        float   weight; 
+        int     weightIndex; 
     };
 };
