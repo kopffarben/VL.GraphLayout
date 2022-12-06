@@ -1,11 +1,13 @@
 [Summary("Increments values in a buffer.")]
 shader ApplyDisplacment_ComputeFX : ComputeShaderBase
 {
-    float	maxDist             = 1.0;   
+    float	maxDist             = 1.0;
+    float	minDist             = 0.1;   
     float   damping             = 0.01;
 
     RWStructuredBuffer<float3>  nodeBuffer;
-    RWStructuredBuffer<float3>  dispBuffer;
+    //RWStructuredBuffer<float3>  dispBuffer;
+    RWByteAddressBuffer           dispBuffer;
 
     override void Compute()
     {
@@ -16,14 +18,19 @@ shader ApplyDisplacment_ComputeFX : ComputeShaderBase
 
         if (index>numNodes) return;
 
-        float3 nDisp = normalize(dispBuffer[index]);
-        if (IsNaN(nDisp.x) || IsNaN(nDisp.y) || IsNaN(nDisp.z))
-        {   
-            
-        }
-        else
+        //float3 disp = dispBuffer[index];
+        float x,y,z;
+        dispBuffer.InterlockedExchange((index * 3 + 0) * 4, 0.0 ,x);
+        dispBuffer.InterlockedExchange((index * 3 + 1) * 4, 0.0 ,y);
+        dispBuffer.InterlockedExchange((index * 3 + 2) * 4, 0.0 ,z);
+        float3 disp = float3(x,y,z);
+
+
+        float len = length(disp);
+
+        if (len > minDist)
         {
-            nodeBuffer[index] = nodeBuffer[index] + (nDisp*min(length(dispBuffer[index]),maxDist) * damping);
+            nodeBuffer[index] = nodeBuffer[index] + (normalize(disp) * min(len,maxDist) * damping);
         }
     }
 

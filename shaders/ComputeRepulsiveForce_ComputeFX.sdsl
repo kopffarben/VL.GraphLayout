@@ -5,8 +5,8 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
     float   damping             = 0.01;
 
     StructuredBuffer<float3>    nodeBuffer;
-    RWStructuredBuffer<float3>  dispBuffer;
-
+    //RWStructuredBuffer<float3>  dispBuffer;
+    RWByteAddressBuffer         dispBuffer;
 
     override void Compute()
     {
@@ -20,7 +20,7 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
         float3 disp=float3(0, 0, 0);	//displacement of a node
         if (damping > 0.001)
         {
-            float3 K = float3(sqrt((area.x*area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z*area.z)/((float)numNodes)));
+            float3 K = float3(sqrt((area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z)/((float)numNodes)));
 
             // Compute repulsive force
             for (uint i=0; i<numNodes;i++)
@@ -29,11 +29,16 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
 			    {
 				    float3 delta    = nodeBuffer[index]-nodeBuffer[i];
 				    float dist      = length(delta);
-				    float3 f         = K*K/dist;
+				    float3 f        = K*K/dist;
 				    disp            = disp+ normalize(delta)*f;
 			    }			
 		    }              
         }
-        dispBuffer[index] = disp;
+        float outval;
+        disp = disp * damping;
+        dispBuffer.InterlockedExchange((index * 3 + 0) * 4 ,disp.x ,outval);
+        dispBuffer.InterlockedExchange((index * 3 + 1) * 4 ,disp.y ,outval);
+        dispBuffer.InterlockedExchange((index * 3 + 2) * 4 ,disp.z ,outval);
+        //dispBuffer[index] = disp * damping;
     }
 };

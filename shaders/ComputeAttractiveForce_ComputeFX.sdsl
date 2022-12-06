@@ -25,7 +25,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 
         if (damping > 0.001)
         {
-            float3 K = float3(sqrt((area.x*area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z*area.z)/((float)numNodes)));
+            float3 K = float3(sqrt((area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z)/((float)numNodes)));
 
             float3 edgeDelta=nodeBuffer[(uint)(edgeBuffer[index].toIndex)]-nodeBuffer[edgeBuffer[index].fromIndex];
             float  edgeDist=length(edgeDelta);
@@ -34,7 +34,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
             {   
                 nEdgeDelta = float3(0,0,0);
             }
-            float3 disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K;
+            float3 disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K * damping;
 
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 0) * 4, disp.x);
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 1) * 4, disp.y);
