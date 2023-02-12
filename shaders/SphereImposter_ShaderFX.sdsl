@@ -1,0 +1,44 @@
+﻿shader SphereImposter_ShaderFX : SphereImposter_Provider, TransformationBase, VertexIDStream
+{
+	rgroup PerMaterial
+	{
+		stage StructuredBuffer<float3> posBuffer;
+		stage StructuredBuffer<float> sizeBuffer;
+		stage StructuredBuffer<float4> colorBuffer;
+	}
+
+	cbuffer PerMaterial
+	{
+		stage float		SizeDefualt = 0.1;
+		[Color]
+		stage float4	ColorDefualt = float4(1,1,1,1);
+	}
+
+	// assign VertexID
+	stage override void PreTransformPosition()
+	{
+		AssignVertexID();
+	}
+
+	override stage float3 getSpherePos()
+	{
+		uint id = streams.VertexID;
+		return posBuffer[id];
+	}
+
+	override stage float getSphereSize()
+	{
+		uint id = streams.VertexID; 
+		uint sizeCount, stride;
+		sizeBuffer.GetDimensions(sizeCount, stride);
+		return sizeCount > 0 ? sizeBuffer[id % sizeCount] : SizeDefualt;
+	}
+
+	override stage float4 getSphereColor()
+    {
+        uint id = streams.VertexID; 
+		uint colorCount, stride;
+		colorBuffer.GetDimensions(colorCount, stride);
+		return colorCount > 0 ? colorBuffer[id % colorCount] : ColorDefualt;
+    }
+};

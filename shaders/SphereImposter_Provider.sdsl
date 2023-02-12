@@ -1,0 +1,16 @@
+shader SphereImposter_Provider
+{
+    stage float3 getSpherePos()
+    {
+        return 1;
+    }
+
+    stage float getSphereSize()
+    {
+        return 0.1;
+    }
+    stage float4 getSphereColor()
+    {
+        return float4(1,0,0,1);
+    }
+};
