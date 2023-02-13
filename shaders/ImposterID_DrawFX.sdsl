@@ -51,7 +51,7 @@ shader ImposterID_DrawFX : VS_PS_Base
         uint count, dummy;	
         sizeBuffer.GetDimensions(count, dummy);
         streams.Size = count > 0 ? sizeBuffer[id % count] : sizeDefualt;
-        streams.Color = float4((float)id,-1,-1,-1);
+        streams.Color = float4((float)id,(float)id,-1,-1);
     }
 
     // GS ==============================================================================
