@@ -38,7 +38,7 @@
 		uint id = streams.VertexID; 
 		uint sizeCount, stride;
 		sizeBuffer.GetDimensions(sizeCount, stride);
-		return sizeCount > 0 ? sizeBuffer[id % sizeCount] : SizeDefualt;
+		return sizeCount > 0 ? sizeBuffer[id % sizeCount] * SizeDefualt : SizeDefualt;
 	}
 
 	
