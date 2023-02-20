@@ -846,6 +846,7 @@
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                 <Choice Kind="ProcessNode" Name="ImposterIDShader" />
               </p:NodeReference>
+              <Pin Id="Fylof3vO4UqNsr5Y65p7Qa" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="UDWIue99lpjOh7SfekpFn7" Name="Pos Buffer" Kind="InputPin" />
               <Pin Id="NyIBlM9Z3RCPVQWT9o1hwD" Name="Size Buffer" Kind="InputPin" />
               <Pin Id="LeDnuYV0yPsOYitgQP9JrK" Name="Size Defualt" Kind="InputPin" />
@@ -1807,6 +1808,7 @@
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                 <Choice Kind="ProcessNode" Name="ImposterIDShader" />
               </p:NodeReference>
+              <Pin Id="DmFWosfWoQEM1AgRzXttU9" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="LGgttj3cloRPQpEVfMQelN" Name="Pos Buffer" Kind="InputPin" />
               <Pin Id="OVXBkVCcaThLMdGv2EPQ5O" Name="Size Buffer" Kind="InputPin" />
               <Pin Id="P9lHJMU4at3OLBKhg7vJSx" Name="Size Defualt" Kind="InputPin" />
@@ -1841,15 +1843,8 @@
             <ControlPoint Id="BcnPK9PaMKtPoFeOBCNHju" Bounds="830,763" />
             <ControlPoint Id="FoXgLDU6UltN8W6fvgfc9r" Bounds="817,1132" />
             <ControlPoint Id="FhOYrnKhVWiP1TPgHHn1hU" Bounds="993,761" />
+            <ControlPoint Id="F2O13LxMN78NQnCNNJa9co" Bounds="781,719" />
           </Canvas>
-          <Patch Id="KhXNZDFH1pGOoj0MGmuEvj" Name="Create" />
-          <Patch Id="NCpzFiwqWwbPVTSMZc71fZ" Name="Update">
-            <Pin Id="Qfi44BWTWmOMJwbNktHDgO" Name="NodePositionBuffer" Kind="InputPin" />
-            <Pin Id="AOXOmXK3xACQdgzMsbPvgC" Name="Size Buffer" Kind="InputPin" Bounds="523,274" />
-            <Pin Id="Eb8TfsmHfxJObmpkJEylBc" Name="Size Defualt" Kind="InputPin" Bounds="610,333" DefaultValue="0.25" />
-            <Pin Id="R2dvGTOAWKCNZ0Suzi8UHe" Name="Output" Kind="OutputPin" Bounds="817,1132" />
-            <Pin Id="PhoQVcDEaMhL1v05sAoWBw" Name="Mesh" Kind="InputPin" Bounds="993,761" />
-          </Patch>
           <ProcessDefinition Id="JOYGrtTdRjeMNu24PLnkkc">
             <Fragment Id="E2zbEsO38mDPDGYfKbI3RL" Patch="KhXNZDFH1pGOoj0MGmuEvj" Enabled="true" />
             <Fragment Id="DT99Hm2PPwBN2KyYOOLUlw" Patch="NCpzFiwqWwbPVTSMZc71fZ" Enabled="true" />
@@ -1866,6 +1861,17 @@
           <Link Id="IEpclDIL1vJP8bdC1hhcgC" Ids="FhOYrnKhVWiP1TPgHHn1hU,EYrLXOCeVRoOjracuMHMuT" />
           <Link Id="KlmJQfo9PP0MHh6VtipHce" Ids="PhoQVcDEaMhL1v05sAoWBw,FhOYrnKhVWiP1TPgHHn1hU" IsHidden="true" />
           <Link Id="GLFxuEgCjysLobWCAuPDh9" Ids="QxuxwP6ZytdOCsqOjwaWhI,FoXgLDU6UltN8W6fvgfc9r" />
+          <Link Id="Pg9F5nCBOloPQ01JIy19YL" Ids="F2O13LxMN78NQnCNNJa9co,DmFWosfWoQEM1AgRzXttU9" />
+          <Link Id="VkYl83kdIhsO7yiozemuNT" Ids="J4wUrXzrGCCMflNC0uK3VR,F2O13LxMN78NQnCNNJa9co" IsHidden="true" />
+          <Patch Id="KhXNZDFH1pGOoj0MGmuEvj" Name="Create" />
+          <Patch Id="NCpzFiwqWwbPVTSMZc71fZ" Name="Update">
+            <Pin Id="J4wUrXzrGCCMflNC0uK3VR" Name="Enabled Buffer" Kind="InputPin" Bounds="781,719" />
+            <Pin Id="Qfi44BWTWmOMJwbNktHDgO" Name="NodePositionBuffer" Kind="InputPin" />
+            <Pin Id="AOXOmXK3xACQdgzMsbPvgC" Name="Size Buffer" Kind="InputPin" Bounds="523,274" />
+            <Pin Id="Eb8TfsmHfxJObmpkJEylBc" Name="Size Defualt" Kind="InputPin" Bounds="610,333" DefaultValue="0.25" />
+            <Pin Id="PhoQVcDEaMhL1v05sAoWBw" Name="Mesh" Kind="InputPin" Bounds="993,761" />
+            <Pin Id="R2dvGTOAWKCNZ0Suzi8UHe" Name="Output" Kind="OutputPin" Bounds="817,1132" />
+          </Patch>
         </Patch>
       </Node>
     </Canvas>
