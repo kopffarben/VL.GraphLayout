@@ -3,6 +3,7 @@
 	rgroup PerMaterial
 	{
 		stage StructuredBuffer<float3> posBuffer;
+		stage StructuredBuffer<bool> enabledBuffer;
 		stage StructuredBuffer<float> sizeBuffer;
 		stage StructuredBuffer<float4> colorBuffer;
 	}
@@ -20,6 +21,12 @@
 		AssignVertexID();
 	}
 
+	override stage bool enabled()
+	{
+		uint id = streams.VertexID;
+		return enabledBuffer[id];
+	}
+
 	override stage float3 getSpherePos()
 	{
 		uint id = streams.VertexID;
@@ -33,6 +40,8 @@
 		sizeBuffer.GetDimensions(sizeCount, stride);
 		return sizeCount > 0 ? sizeBuffer[id % sizeCount] : SizeDefualt;
 	}
+
+	
 
 	override stage float4 getSphereColor()
     {

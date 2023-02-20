@@ -1,7 +1,8 @@
 [Summary("Increments values in a buffer.")]
 shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 {
-    StructuredBuffer<float3>    nodeBuffer; 
+    StructuredBuffer<float3>    nodeBuffer;
+    StructuredBuffer<bool>      nodeEnabeldBuffer;  
     StructuredBuffer<float4>    nodeColorBuffer; 
     StructuredBuffer<EdgeBuffer>      edgeBuffer; 
      

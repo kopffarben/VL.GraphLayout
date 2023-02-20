@@ -57,22 +57,26 @@ shader SphereImposter_Extension_ShaderFX : MaterialExtension
 	stage void GSMain(point Input input[1], inout TriangleStream<Output> triangleStream)
 	{
 		streams = input[0];
-		streams.PositionWS = float4(Provider.getSpherePos(), 1);
-		streams.sphereSize = Provider.getSphereSize();
-		streams.sphereColor = Provider.getSphereColor();
 
-		float padding = 1.5;
-		float2 offset;
-		float4 cameraSpherePos = mul(streams.PositionWS, WorldView);
-		
-		for (int i = 0; i<4; i++) 
+		if (Provider.enabled())
 		{
-			streams.TexCoord = QuadPositions[i].xy * padding;
-			offset = sign(QuadPositions[i].xy) * streams.sphereSize;
-			float4 viewCornerPos = cameraSpherePos;
-			viewCornerPos.xy += offset * padding;
-			streams.ShadingPosition = mul(viewCornerPos, Projection);
-			triangleStream.Append(streams);
+			streams.PositionWS = float4(Provider.getSpherePos(), 1);
+			streams.sphereSize = Provider.getSphereSize();
+			streams.sphereColor = Provider.getSphereColor();
+
+			float padding = 1.5;
+			float2 offset;
+			float4 cameraSpherePos = mul(streams.PositionWS, WorldView);
+		
+			for (int i = 0; i<4; i++) 
+			{
+				streams.TexCoord = QuadPositions[i].xy * padding;
+				offset = sign(QuadPositions[i].xy) * streams.sphereSize;
+				float4 viewCornerPos = cameraSpherePos;
+				viewCornerPos.xy += offset * padding;
+				streams.ShadingPosition = mul(viewCornerPos, Projection);
+				triangleStream.Append(streams);
+			}
 		}
 	}
 

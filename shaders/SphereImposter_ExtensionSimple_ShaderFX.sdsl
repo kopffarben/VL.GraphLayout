@@ -25,20 +25,23 @@ shader SphereImposter_ExtensionSimple_ShaderFX : MaterialExtension, ShaderUtils
 	{
 		streams = input[0];
 
-		// get data from ParticleProvider implementation
-		streams.PositionWS = float4(Provider.getSpherePos(), 1);
-		streams.sphereSize = Provider.getSphereSize();
-		streams.sphereColor = Provider.getSphereColor();
-		float4 posView = mul(streams.PositionWS, WorldView);
-
-		for (int i=0; i<4; i++)
+		if (Provider.enabled())
 		{
-			streams.TexCoord  = QuadUV[i].xy * 2 - 1; //center and scale for sphere impostor
-			float4 viewCornerPos = float4(posView.xyz + QuadPositions[i].xyz * streams.sphereSize, 1);
-			streams.ShadingPosition = mul(viewCornerPos, Projection);
+			// get data from ParticleProvider implementation
+			streams.PositionWS = float4(Provider.getSpherePos(), 1);
+			streams.sphereSize = Provider.getSphereSize();
+			streams.sphereColor = Provider.getSphereColor();
+			float4 posView = mul(streams.PositionWS, WorldView);
 
-			triangleStream.Append(streams);
-		}     
+			for (int i=0; i<4; i++)
+			{
+				streams.TexCoord  = QuadUV[i].xy * 2 - 1; //center and scale for sphere impostor
+				float4 viewCornerPos = float4(posView.xyz + QuadPositions[i].xyz * streams.sphereSize, 1);
+				streams.ShadingPosition = mul(viewCornerPos, Projection);
+
+				triangleStream.Append(streams);
+			}
+		}
 	}
 
 

@@ -13,4 +13,9 @@ shader SphereImposter_Provider
     {
         return float4(1,0,0,1);
     }
+
+    stage bool enabled()
+    {
+        return false;
+    }
 };
