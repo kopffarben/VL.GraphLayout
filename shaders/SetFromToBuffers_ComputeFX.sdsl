@@ -6,6 +6,7 @@ shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
     StructuredBuffer<float4>    nodeColorBuffer; 
     StructuredBuffer<EdgeBuffer>      edgeBuffer; 
      
+    RWStructuredBuffer<bool>  EdgeEnabledBuffer;
     RWStructuredBuffer<float3>  fromBuffer;
     RWStructuredBuffer<float3>  toBuffer;
     RWStructuredBuffer<float4>  fromColorBuffer;
@@ -21,6 +22,7 @@ shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 
         if (index>numEdges) return;
 
+        EdgeEnabledBuffer[index] = nodeEnabeldBuffer[(uint)edgeBuffer[index].fromIndex] && nodeEnabeldBuffer[(uint)edgeBuffer[index].toIndex];
         fromBuffer[index] = nodeBuffer[(uint)edgeBuffer[index].fromIndex];
         toBuffer[index]   = nodeBuffer[(uint)edgeBuffer[index].toIndex];
         fromColorBuffer[index] = nodeColorBuffer[(uint)edgeBuffer[index].fromIndex];
