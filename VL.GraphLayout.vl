@@ -1015,6 +1015,7 @@
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                 <Choice Kind="ProcessAppFlag" Name="BTubeEntity (Buffer)" />
               </p:NodeReference>
+              <Pin Id="L8iYRKZuPL6MorPUjF6DYD" Name="Edge Enabled Buffer" Kind="InputPin" />
               <Pin Id="EbTjTRdnFrTOVzXyYWWGTf" Name="From Buffer" Kind="InputPin" />
               <Pin Id="DH68N4xdGgKO01fOcECBQJ" Name="To Buffer" Kind="InputPin" />
               <Pin Id="VKX4RNUrGPAQJJ8piM4M5k" Name="From Color Buffer" Kind="InputPin" />
