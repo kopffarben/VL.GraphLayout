@@ -34,11 +34,16 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
 				            float3 delta    = nodeBuffer[index]-nodeBuffer[i];
 				            float dist      = length(delta);
 				            float3 f        = K*K/dist;
-				            disp            = disp+ normalize(delta)*f;
+				            disp            = disp + normalize(delta)*f;
 			            }
                     }
 		        }              
             }
+
+            float3 dampFromCenter = 1-max(0,min(1,(length(nodeBuffer[index])/area)));
+            disp = disp * dampFromCenter * dampFromCenter;
+
+
         }
         float outval;
         disp = disp * damping;
