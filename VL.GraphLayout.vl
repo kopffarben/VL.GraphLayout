@@ -22,6 +22,7 @@
               <Pin Id="V09iBkHPOqyMuh5LzYyS37" Name="Dispatcher" Kind="InputPin" />
               <Pin Id="USWpyYMi7G5PqYXh60ahKx" Name="Thread Group Size" Kind="InputPin" />
               <Pin Id="OfqJCfBdUCzOO2C62sSLFk" Name="Node Buffer" Kind="InputPin" />
+              <Pin Id="F6KRMb2XWdjLIWGyOo6BNY" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="DD5Ca34J2v3M0hmniAMCjP" Name="Disp Buffer" Kind="InputPin" />
               <Pin Id="DDoaxtUtyQnQO3IcRstfll" Name="Area" Kind="InputPin" />
               <Pin Id="LrSRzRbipkpNYpxudQZRaB" Name="Damping" Kind="InputPin" />
@@ -56,7 +57,7 @@
               </p:ValueBoxSettings>
             </Pad>
             <Pad Id="Sy3jHqcfw0nPcw5NT1lWbR" SlotId="DsqHJSNQF3LNb1iWV0Dm2w" Bounds="1628,435" />
-            <Pad Id="V7meiN0QoxuNbMG35PdUBd" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="1681,335" />
+            <Pad Id="V7meiN0QoxuNbMG35PdUBd" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="1648,387" />
             <Node Bounds="1921,608,165,19" Id="DXjhXfsuwsoOJlhknjLTbC">
               <p:NodeReference LastCategoryFullName="Stride.Rendering.ComputeShaders" LastDependency="VL.GraphLayout">
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -65,6 +66,7 @@
               <Pin Id="S45rVhgouyOPltneRG4Pfa" Name="Dispatcher" Kind="InputPin" />
               <Pin Id="Al158IxxzaoOFEfsei07oT" Name="Thread Group Size" Kind="InputPin" />
               <Pin Id="SDU3ChAQ6lQNzYiKUsNmUC" Name="Node Buffer" Kind="InputPin" />
+              <Pin Id="SZEDhZ2oyPXPVxXFW2vXDu" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="P7ugsPe6tSOLY5MWgQNYVP" Name="Weight Buffer" Kind="InputPin" />
               <Pin Id="FIVK51WacfnPy6A1ZyKfUn" Name="Edge Buffer" Kind="InputPin" />
               <Pin Id="MvvrVtb9PdiQXeiay2WSLm" Name="Disp Buffer" Kind="InputPin" />
@@ -101,8 +103,8 @@
                 <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
               </p:ValueBoxSettings>
             </Pad>
-            <Pad Id="F7hXqvpNGxFN0OTml2TLQV" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="1972,418" />
-            <Pad Id="RrnUuyqBOmBNHJE2lDv8KU" SlotId="E5aJ86NAUUWL1bmWUFJxEc" Bounds="1994,449" />
+            <Pad Id="F7hXqvpNGxFN0OTml2TLQV" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="1937,398" />
+            <Pad Id="RrnUuyqBOmBNHJE2lDv8KU" SlotId="E5aJ86NAUUWL1bmWUFJxEc" Bounds="1988,317" />
             <Node Bounds="1626,678,891,19" Id="N0T6894XGlRQWGZms38gKY">
               <p:NodeReference LastCategoryFullName="Stride.Rendering" LastDependency="VL.Stride.vl">
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -117,8 +119,8 @@
               <Pin Id="VGVIt33JAf3NnFoG3wTCNr" Name="Input 3" Kind="InputPin" />
               <Pin Id="Hi9HaGZjfAVPidimhynPOB" Name="Input 4" Kind="InputPin" />
             </Node>
-            <Pad Id="ThMQvJ4vJ7vLgTNxkEu7Nt" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="2018,390" />
-            <Pad Id="BQy7T5wIFJiLVp0gdbucf5" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="1705,356" />
+            <Pad Id="ThMQvJ4vJ7vLgTNxkEu7Nt" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="1999,293" />
+            <Pad Id="BQy7T5wIFJiLVp0gdbucf5" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="1689,324" />
             <Node Bounds="2216,608,145,19" Id="KT2jHbCl93rMjJQyqDzNjp">
               <p:NodeReference LastCategoryFullName="Stride.Rendering.ComputeShaders" LastDependency="VL.GraphLayout">
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -126,6 +128,7 @@
               </p:NodeReference>
               <Pin Id="NlbQdUkHGBxQFgHYM8pLMp" Name="Dispatcher" Kind="InputPin" />
               <Pin Id="N1OidTPvp7JMrouOLFtaOX" Name="Thread Group Size" Kind="InputPin" />
+              <Pin Id="O50y68PvXGEP1KTGzmNTWl" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="BTkHxKkWSk9Lh2KZvgpI6Q" Name="Node Buffer" Kind="InputPin" />
               <Pin Id="P4E6biWEHKEPtan0sbp4Kb" Name="Disp Buffer" Kind="InputPin" />
               <Pin Id="RRa2Ffw0MqsNMFdd1wCaOJ" Name="Max Dist" Kind="InputPin" />
@@ -162,8 +165,8 @@
                 <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
               </p:ValueBoxSettings>
             </Pad>
-            <Pad Id="KkqWPuNmcNOPvPhGtUewds" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="2265,341" />
-            <Pad Id="TSTRnjHxjQWNVFZlm6YCLq" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="2289,373" />
+            <Pad Id="KkqWPuNmcNOPvPhGtUewds" SlotId="IKxABDtwJQNO7qD2RW5JAG" Bounds="2257,385" />
+            <Pad Id="TSTRnjHxjQWNVFZlm6YCLq" SlotId="S7bdCQBt7PLMih0dXd3Bkm" Bounds="2261,348" />
             <Node Bounds="2511,608,185,19" Id="DzrmW59NFnBMJB9JgjGPnz">
               <p:NodeReference LastCategoryFullName="Stride.Rendering.ComputeShaders" LastDependency="VL.GraphLayout">
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -396,12 +399,12 @@
             <ControlPoint Id="LfObCTJe5pzQOuMXpVAnAb" Bounds="626,840" />
             <Pad Id="Nav4AUIQ0MPPsOrixNKeNX" SlotId="LuP9IOOEnI6N7DZVrg0RR6" Bounds="1132,338" />
             <ControlPoint Id="OuwxzPZWToPP8nn1jqVhkd" Bounds="1132,115" />
-            <Pad Id="Hchlypk32lULgpSoIMT9gF" SlotId="LuP9IOOEnI6N7DZVrg0RR6" Bounds="1985,334" />
-            <Pad Id="CHp63kBjJpAL7OOI0occk7" SlotId="Vs4Pt75yDDiP9IPKLFvofs" Bounds="2320,347" />
+            <Pad Id="Hchlypk32lULgpSoIMT9gF" SlotId="LuP9IOOEnI6N7DZVrg0RR6" Bounds="1971,348" />
+            <Pad Id="CHp63kBjJpAL7OOI0occk7" SlotId="Vs4Pt75yDDiP9IPKLFvofs" Bounds="2339,318" />
             <ControlPoint Id="VEBz3mJwK37QMgApg7gUL8" Bounds="2055,55" />
             <Pad Id="K0USqxJTjOEQAA99twjJMo" Comment="" Bounds="2055,100,35,15" ShowValueBox="true" isIOBox="true" />
             <Pad Id="NuP6Xt3LvmeMpJRDAHYFAa" SlotId="BOswN2SuV0wNTPir7mKpDn" Bounds="2055,181" />
-            <Pad Id="QlZMMWhKo8gPjCV0NcM2FG" SlotId="BOswN2SuV0wNTPir7mKpDn" Bounds="2382,363" />
+            <Pad Id="QlZMMWhKo8gPjCV0NcM2FG" SlotId="BOswN2SuV0wNTPir7mKpDn" Bounds="2384,286" />
             <Node Bounds="2384,467,25,19" Id="GEU1opU1trtQB5vX690D8W">
               <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -518,6 +521,9 @@
             <ControlPoint Id="NDJ4sKBhAObOyd65edZ6lQ" Bounds="120,839" />
             <Pad Id="AYAZyK0ffkFOIDn2GkhKlg" SlotId="TQIwb1HS5WOQIt3S6bBvI1" Bounds="2581,347" />
             <Pad Id="PPmqmEGYK77LahIuyF0zNp" SlotId="MSsrEZEq9tkNjQJ1eI2MsN" Bounds="2649,418" />
+            <Pad Id="HTVE9kTiAvANp1N91Su5oA" SlotId="TQIwb1HS5WOQIt3S6bBvI1" Bounds="1672,352" />
+            <Pad Id="T0c3BPI8nl3LxPlErKjGhu" SlotId="TQIwb1HS5WOQIt3S6bBvI1" Bounds="1948,370" />
+            <Pad Id="FAsSxXps6oeLqZY2k6vzBI" SlotId="TQIwb1HS5WOQIt3S6bBvI1" Bounds="2244,404" />
           </Canvas>
           <ProcessDefinition Id="RVdvWw2jzmFQI41wLtI8aS">
             <Fragment Id="HaTbcSHqXbIMcWiaWAn0uN" Patch="F7CgZWUHWFqNT0l6mSvrxP" Enabled="true" />
@@ -705,6 +711,9 @@
           <Link Id="McN9QvnKZEvNUrYzMgfLyn" Ids="NDJ4sKBhAObOyd65edZ6lQ,CuEvAOLWno7OlKt6ASIN3W" IsHidden="true" />
           <Link Id="IG9hQ4O1CKVP4TvTdtU6Tt" Ids="AYAZyK0ffkFOIDn2GkhKlg,A9Jzirp3syLQQz9tNpuMaA" />
           <Link Id="AwUDJtnV133QDIOi5GmGlF" Ids="PPmqmEGYK77LahIuyF0zNp,VvDx5hQ8eASOiVVkF1fTVX" />
+          <Link Id="ARkff0grd3eMXXXjlvlyr2" Ids="HTVE9kTiAvANp1N91Su5oA,F6KRMb2XWdjLIWGyOo6BNY" />
+          <Link Id="Nl7iX7oG8CkNdRvIjB290q" Ids="T0c3BPI8nl3LxPlErKjGhu,SZEDhZ2oyPXPVxXFW2vXDu" />
+          <Link Id="Qv7m4EtywPtL2FTPQZ65o7" Ids="FAsSxXps6oeLqZY2k6vzBI,O50y68PvXGEP1KTGzmNTWl" />
         </Patch>
       </Node>
       <!--

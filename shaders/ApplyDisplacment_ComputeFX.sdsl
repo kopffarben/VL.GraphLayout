@@ -6,8 +6,8 @@ shader ApplyDisplacment_ComputeFX : ComputeShaderBase
     float   damping             = 0.01;
 
     RWStructuredBuffer<float3>  nodeBuffer;
-    //RWStructuredBuffer<float3>  dispBuffer;
-    RWByteAddressBuffer           dispBuffer;
+    StructuredBuffer<bool>      enabledBuffer;
+    RWByteAddressBuffer         dispBuffer;
 
     override void Compute()
     {
@@ -18,19 +18,22 @@ shader ApplyDisplacment_ComputeFX : ComputeShaderBase
 
         if (index>numNodes) return;
 
-        //float3 disp = dispBuffer[index];
-        float x,y,z;
-        dispBuffer.InterlockedExchange((index * 3 + 0) * 4, 0.0 ,x);
-        dispBuffer.InterlockedExchange((index * 3 + 1) * 4, 0.0 ,y);
-        dispBuffer.InterlockedExchange((index * 3 + 2) * 4, 0.0 ,z);
-        float3 disp = float3(x,y,z);
-
-
-        float len = length(disp);
-
-        if (len > minDist)
+        if (enabledBuffer[index])
         {
-            nodeBuffer[index] = nodeBuffer[index] + (normalize(disp) * min(len,maxDist) * damping);
+            //float3 disp = dispBuffer[index];
+            float x,y,z;
+            dispBuffer.InterlockedExchange((index * 3 + 0) * 4, 0.0 ,x);
+            dispBuffer.InterlockedExchange((index * 3 + 1) * 4, 0.0 ,y);
+            dispBuffer.InterlockedExchange((index * 3 + 2) * 4, 0.0 ,z);
+            float3 disp = float3(x,y,z);
+
+
+            float len = length(disp);
+
+            if (len > minDist)
+            {
+                nodeBuffer[index] = nodeBuffer[index] + (normalize(disp) * min(len,maxDist) * damping);
+            }
         }
     }
 

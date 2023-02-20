@@ -5,6 +5,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
     float   damping     = 0.01;
     
     StructuredBuffer<float3>        nodeBuffer; 
+    StructuredBuffer<bool>          enabledBuffer;
     StructuredBuffer<float>         weightBuffer; 
     StructuredBuffer<EdgeBuffer>    edgeBuffer; 
      
@@ -25,17 +26,21 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 
         if (damping > 0.001)
         {
-            float3 K = float3(sqrt((area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z)/((float)numNodes)));
+            float3 disp=float3(0, 0, 0);
 
-            float3 edgeDelta=nodeBuffer[(uint)(edgeBuffer[index].toIndex)]-nodeBuffer[edgeBuffer[index].fromIndex];
-            float  edgeDist=length(edgeDelta);
-            float3 nEdgeDelta = normalize(edgeDelta);
-            if (IsNaN(nEdgeDelta.x) || IsNaN(nEdgeDelta.y) || IsNaN(nEdgeDelta.z))
-            {   
-                nEdgeDelta = float3(0,0,0);
+            if (enabledBuffer[(uint)(edgeBuffer[index].toIndex)] && enabledBuffer[(uint)(edgeBuffer[index].fromIndex)])
+            {
+                float3 K = float3(sqrt((area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z)/((float)numNodes)));
+
+                float3 edgeDelta=nodeBuffer[(uint)(edgeBuffer[index].toIndex)]-nodeBuffer[edgeBuffer[index].fromIndex];
+                float  edgeDist=length(edgeDelta);
+                float3 nEdgeDelta = normalize(edgeDelta);
+                if (IsNaN(nEdgeDelta.x) || IsNaN(nEdgeDelta.y) || IsNaN(nEdgeDelta.z))
+                {   
+                    nEdgeDelta = float3(0,0,0);
+                }
+                disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K * damping;
             }
-            float3 disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K * damping;
-
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 0) * 4, disp.x);
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 1) * 4, disp.y);
             InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 2) * 4, disp.z);
