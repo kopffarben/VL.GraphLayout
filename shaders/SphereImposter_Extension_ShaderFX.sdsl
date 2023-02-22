@@ -1,4 +1,4 @@
-shader SphereImposter_Extension_ShaderFX : MaterialExtension
+shader SphereImposter_Extension_ShaderFX : MaterialExtension, ShaderUtils
 {
 	compose SphereImposter_Provider Provider;
 
@@ -59,7 +59,7 @@ shader SphereImposter_Extension_ShaderFX : MaterialExtension
 		streams = input[0];
 
 		if (Provider.enabled())
-		{
+		{	
 			streams.PositionWS = float4(Provider.getSpherePos(), 1);
 			streams.sphereSize = Provider.getSphereSize();
 			streams.sphereColor = Provider.getSphereColor();
@@ -88,7 +88,7 @@ shader SphereImposter_Extension_ShaderFX : MaterialExtension
 
 		// call stride shading
 		///////////////////////////////////////////////////////////////
-        return StrideShadingWorldNormal(p, n) * streams.sphereColor;;
+		return StrideShadingWorldNormal(p, n) * streams.sphereColor;;
 		////////////////////////////////////////////////////////////////
 	}
 };

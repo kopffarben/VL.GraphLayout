@@ -757,6 +757,8 @@
                 <Choice Kind="ProcessAppFlag" Name="GraphSphereImposter" />
               </p:NodeReference>
               <p:HelpFocus p:Assembly="VL.Lang" p:Type="VL.Model.HelpPriority">High</p:HelpFocus>
+              <Pin Id="VjqfiL8mf4JOihuDMfyJmJ" Name="Enabled Buffer" Kind="InputPin" />
+              <Pin Id="OUJM1VlHKrCNuFb1nwVLlH" Name="Selected Buffer" Kind="InputPin" />
               <Pin Id="ENesMN1wvefPVTC6eGMdRN" Name="Pos Buffer" Kind="InputPin" />
               <Pin Id="CPa3Oh9zbgFPsqNAHymhui" Name="Size Buffer" Kind="InputPin" />
               <Pin Id="B8tFnc5IxWlLZmjrwhO6be" Name="Size Defualt" Kind="InputPin" DefaultValue="0.1" />
@@ -772,7 +774,6 @@
                   <Choice Kind="TypeFlag" Name="Boolean" />
                 </p:TypeAnnotation>
               </Pin>
-              <Pin Id="VjqfiL8mf4JOihuDMfyJmJ" Name="Enabled Buffer" Kind="InputPin" />
               <Pin Id="CBXMBDVW6s1M0vc9884Tro" Name="Entity" Kind="OutputPin" />
               <Pin Id="RwBGRowGi4aNp5o7oOcXkB" Name="Mesh" Kind="OutputPin" />
               <Pin Id="FrPVZzmCRyxMfsuyONgALC" Name="SpereImposter" Kind="OutputPin" />
@@ -1423,6 +1424,7 @@
               </p:NodeReference>
               <Pin Id="CBxtuAr6oX9OWU4Q9Vq3Fm" Name="Pos Buffer" Kind="InputPin" />
               <Pin Id="Dd0GhMpAiWgPjMsRj5I1eE" Name="Enabled Buffer" Kind="InputPin" />
+              <Pin Id="RZPKobOKhbIMiZ9a8JMFtk" Name="Selected Buffer" Kind="InputPin" />
               <Pin Id="EmTioGdLaE3Nai53AHGEBg" Name="Size Buffer" Kind="InputPin" />
               <Pin Id="OT69WDEVRLcPhIzwqPopQT" Name="Color Buffer" Kind="InputPin" />
               <Pin Id="JhIlviPw8krNusenL2X2vb" Name="Size Defualt" Kind="InputPin" DefaultValue="0.07">
@@ -1431,6 +1433,9 @@
                 </p:TypeAnnotation>
               </Pin>
               <Pin Id="PWTgMuEUz0DP9UCbuE8EuB" Name="Color Defualt" Kind="InputPin" />
+              <Pin Id="Gd8tC0AChiTO6EQQL1x6ip" Name="Selected Saturation" Kind="InputPin" />
+              <Pin Id="EyTcaSa3knbNI44yH8pkRz" Name="Selected Value" Kind="InputPin" />
+              <Pin Id="PXMysq8pWwZPXeIomUeZ2d" Name="Selected Size" Kind="InputPin" />
               <Pin Id="UzRRWsCKYOyM9mGZ02xzKq" Name="Output" Kind="OutputPin" />
             </Node>
             <ControlPoint Id="Dqaell1jdMYO45TvjeBVJX" Bounds="1606,495" />
@@ -1478,7 +1483,7 @@
             </Node>
             <ControlPoint Id="JzjIvFpu7yFQTPWwVwhTgn" Bounds="1091,504" />
             <ControlPoint Id="MWgcEGStCNjLmv1M3f9i8g" Bounds="906,419" />
-            <ControlPoint Id="U9UWjfcZCN6N9hMcFxK07B" Bounds="854,380" />
+            <ControlPoint Id="U9UWjfcZCN6N9hMcFxK07B" Bounds="813,360" />
             <ControlPoint Id="APc7KrBvbTOLpoW073m3pG" Bounds="941,460" />
             <Pad Id="AYSXorjKOlYOdRxMIhF4K7" Bounds="1900,648,65,31" ShowValueBox="true" isIOBox="true" Value="Defualt Setting">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
@@ -1548,7 +1553,7 @@
                 <Choice Kind="ProcessNode" Name="SphereImposter (Extension)" />
               </p:NodeReference>
               <Pin Id="B6jQXWlbfJqPleRwWdFhyY" Name="Provider" Kind="InputPin" />
-              <Pin Id="TY1d4RaWiiuN0FqVm2qq4d" Name="Shading Color 0" Kind="InputPin" />
+              <Pin Id="NTdm1XRI7NJNY7cF0fUGR6" Name="Shading Color 0" Kind="InputPin" />
               <Pin Id="Km8ENDhWWbfNYiQIFdIQfE" Name="Output" Kind="OutputPin" />
             </Node>
             <Node Bounds="1132,895,45,19" Id="KGP6q6pH3X7NFRwTusNrIM">
@@ -1600,7 +1605,8 @@
             </Node>
             <ControlPoint Id="JOBSXfTazNTLPeYt01IJSv" Bounds="983,488" />
             <ControlPoint Id="QPs1hWEGCdjPhoITz5TyNF" Bounds="1543,1138" />
-            <ControlPoint Id="UPLsBbe5OEhPh3MVcTBL1W" Bounds="880,400" />
+            <ControlPoint Id="UPLsBbe5OEhPh3MVcTBL1W" Bounds="839,380" />
+            <ControlPoint Id="H0ckJ1UbfkPN8DOEynOyHs" Bounds="869,399" />
           </Canvas>
           <ProcessDefinition Id="SmuPynuqPFlOWoJbpP3NdF">
             <Fragment Id="L2Lkjgyqj6gQIezISMMpjy" Patch="EdpIdZu2O40PoYrVXUiCvq" Enabled="true" />
@@ -1619,7 +1625,6 @@
           <Link Id="VSXGDcLLEffPq1wEa3Suyk" Ids="DiqlHjiEIFQLZtVhyycLDL,U9UWjfcZCN6N9hMcFxK07B" IsHidden="true" />
           <Link Id="VeITSHBWkNSMUSbOANGvRD" Ids="APc7KrBvbTOLpoW073m3pG,JhIlviPw8krNusenL2X2vb" />
           <Link Id="RYQqqIxbpH7PC4axE6CYgQ" Ids="G28hBgo5N4RLksAWLR9FYA,APc7KrBvbTOLpoW073m3pG" IsHidden="true" />
-          <Link Id="CWX9Of3LhfLL4WbQf7313A" Ids="N7HcBFXd7RQOReVP4a0xs4,AS8EeCu2nqWPJuPUsg0qL7" />
           <Link Id="DJFli0ZWoqXMbkIdqgZFVP" Ids="K3NJ1CUVPMOP556bZKjAZq,OdkSKZZKPadPkavXftE4zp" />
           <Link Id="Tni87z5pNOCOjNMtVRkxI8" Ids="CesqOFBpOJzPOsDTNoIr9i,K3NJ1CUVPMOP556bZKjAZq" IsHidden="true" />
           <Link Id="UEIjxr6h4OTPDJ068q3WUN" Ids="HRssj3uEZRjM6LHU8CRomJ,Ncw6aDQOTaCOqZCjsYFn18,M49tILNsrZANnAeenSiKaF" />
@@ -1656,6 +1661,8 @@
           <Link Id="LvlDfgMsZZ2NdkyeWDXKde" Ids="QPs1hWEGCdjPhoITz5TyNF,BzAsdANfcsWMjgCP5bRexj" IsHidden="true" />
           <Patch Id="EdpIdZu2O40PoYrVXUiCvq" Name="Create" />
           <Patch Id="DCO6GqjII5pOuYPZs6NpBL" Name="Update" ManuallySortedPins="true">
+            <Pin Id="G6srH7wrtMlMca29owVpAP" Name="Enabled Buffer" Kind="InputPin" Bounds="883,419" />
+            <Pin Id="VjPT64zjunEQJKWuDFtjeJ" Name="Selected Buffer" Kind="InputPin" Bounds="897,434" />
             <Pin Id="DiqlHjiEIFQLZtVhyycLDL" Name="Pos Buffer" Kind="InputPin" Bounds="881,318" />
             <Pin Id="MstNfYHzyKBOPibWpz8iYz" Name="Size Buffer" Kind="InputPin" Bounds="1007,320" />
             <Pin Id="G28hBgo5N4RLksAWLR9FYA" Name="Size Defualt" Kind="InputPin" Bounds="1036,355" />
@@ -1674,10 +1681,12 @@
             <Pin Id="FsBK828Z8ZLOgLdv3klZHZ" Name="Entity" Kind="OutputPin" Bounds="970,849" />
             <Pin Id="IibwsuUmOoWP763LaCHjMI" Name="Mesh" Kind="OutputPin" Bounds="1734,1110" Visibility="Optional" />
             <Pin Id="BzAsdANfcsWMjgCP5bRexj" Name="SpereImposter" Kind="OutputPin" Bounds="1543,1138" />
-            <Pin Id="G6srH7wrtMlMca29owVpAP" Name="Enabled Buffer" Kind="InputPin" Bounds="883,419" />
           </Patch>
           <Link Id="D74tII2Kc61NIkxyGPDNq8" Ids="G6srH7wrtMlMca29owVpAP,UPLsBbe5OEhPh3MVcTBL1W" IsHidden="true" />
           <Link Id="P0qAYuvmFyRNbk8vxlv6SR" Ids="UPLsBbe5OEhPh3MVcTBL1W,Dd0GhMpAiWgPjMsRj5I1eE" />
+          <Link Id="G1WSt7dALKFLAdRMDX0nn5" Ids="H0ckJ1UbfkPN8DOEynOyHs,RZPKobOKhbIMiZ9a8JMFtk" />
+          <Link Id="CrP2sGL9lTWPiLtXstMRTr" Ids="VjPT64zjunEQJKWuDFtjeJ,H0ckJ1UbfkPN8DOEynOyHs" IsHidden="true" />
+          <Link Id="Qdt0962gwdpMMRtE6pO4J5" Ids="N7HcBFXd7RQOReVP4a0xs4,AS8EeCu2nqWPJuPUsg0qL7" />
         </Patch>
       </Node>
       <!--
