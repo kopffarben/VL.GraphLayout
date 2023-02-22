@@ -1,0 +1,90 @@
+shader Selection_DrawFX : VS_PS_Base
+{
+    stage StructuredBuffer<bool> enabledBuffer;
+    StructuredBuffer<float3> posBuffer;
+
+    cbuffer PerFrame
+    {
+        int ID;
+        float sizeDefualt;
+        [Color]
+		stage float4	ColorDefualt = float4(1,1,1,1);
+        float Thickness;
+        float period;
+    };
+
+    // SPRITES UTILS ==============================================================
+ 
+    void CircleSpriteDiscard(float2 uv, float period)
+    {
+        if(length(uv - 0.5f) > (0.5f*period) || length(uv - 0.5f) < (0.5f*period)-Thickness/2)
+        {
+            discard;
+        }
+    }
+
+    static const float3 QuadPositions[4] = 
+    {
+        float3(-1, 1,0),
+        float3( 1, 1,0),
+        float3(-1, -1,0),
+        float3( 1, -1,0),
+    };
+
+    static const float2 QuadUV[4] = 
+    {
+        float2(0,1), 
+        float2(1,1),
+        float2(0,0),
+        float2(1,0)
+    };
+
+
+
+
+    stream bool Enabled;
+    stream float2 TexCoord;
+    stream uint VertexID : SV_VertexID;
+    stream float4 Color;
+    stream float Size;
+
+    // VS ==============================================================================
+    stage override void VSMain() 
+    {
+        uint id = streams.VertexID;
+
+        streams.Enabled = enabledBuffer[ID];
+        streams.PositionWS = float4(posBuffer[ID], 1);
+        streams.Size = sizeDefualt;
+        streams.Color = ColorDefualt;
+    }
+
+    // GS ==============================================================================
+    [maxvertexcount(4)]
+    stage void GSMain(point Input input[1], inout TriangleStream<Output> triangleStream)
+    {
+        streams = input[0];
+
+        if (streams.Enabled)
+        {
+            for(int i=0; i<4; i++)
+            {
+                streams.TexCoord  = QuadUV[i].xy;
+            
+                float4 posView = mul(streams.PositionWS, WorldView) - float4(0,0,0,0.1);
+                posView.xyz += QuadPositions[i].xyz *  streams.Size;
+                streams.ShadingPosition = mul(posView, Projection);
+                triangleStream.Append(streams);
+            }
+        }
+    }
+
+
+    // PS ==============================================================================
+    stage override void PSMain()
+    {
+        CircleSpriteDiscard(streams.TexCoord, period);       
+        streams.ColorTarget = streams.Color * float4(1,1,1,1-(length(streams.TexCoord - 0.5f)*2));
+    }
+
+};
