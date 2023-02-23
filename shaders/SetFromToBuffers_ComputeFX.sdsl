@@ -3,10 +3,12 @@ shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 {
     StructuredBuffer<float3>    nodeBuffer;
     StructuredBuffer<bool>      nodeEnabeldBuffer;  
+    StructuredBuffer<bool>      nodeSelectedBuffer;  
     StructuredBuffer<float4>    nodeColorBuffer; 
     StructuredBuffer<EdgeBuffer>      edgeBuffer; 
      
-    RWStructuredBuffer<bool>  EdgeEnabledBuffer;
+    RWStructuredBuffer<int>  EdgeEnabledBuffer;
+    RWStructuredBuffer<int>  EdgeSelectedBuffer;
     RWStructuredBuffer<float3>  fromBuffer;
     RWStructuredBuffer<float3>  toBuffer;
     RWStructuredBuffer<float4>  fromColorBuffer;
@@ -22,7 +24,8 @@ shader SetFromToBuffers_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 
         if (index>numEdges) return;
 
-        EdgeEnabledBuffer[index] = nodeEnabeldBuffer[(uint)edgeBuffer[index].fromIndex] && nodeEnabeldBuffer[(uint)edgeBuffer[index].toIndex];
+        EdgeEnabledBuffer[index] = nodeEnabeldBuffer[(uint)edgeBuffer[index].fromIndex] && nodeEnabeldBuffer[(uint)edgeBuffer[index].toIndex]      ? 1 : 0;
+        EdgeSelectedBuffer[index]  = nodeSelectedBuffer[(uint)edgeBuffer[index].fromIndex] && nodeSelectedBuffer[(uint)edgeBuffer[index].toIndex]  ? 1 : 0;;
         fromBuffer[index] = nodeBuffer[(uint)edgeBuffer[index].fromIndex];
         toBuffer[index]   = nodeBuffer[(uint)edgeBuffer[index].toIndex];
         fromColorBuffer[index] = nodeColorBuffer[(uint)edgeBuffer[index].fromIndex];
