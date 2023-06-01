@@ -17,9 +17,11 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
 
         if (index>numNodes) return;
 
-        float3 disp=float3(0, 0, 0);	//displacement of a node
+        
         if (enabledBuffer[index])
         {
+			float3 disp=float3(0, 0, 0);	//displacement of a node
+		
             if (damping > 0.001)
             {
                 float3 K = float3(sqrt((area.x*area.x)/((float)numNodes)),sqrt((area.y*area.y)/((float)numNodes)),sqrt((area.z*area.z)/((float)numNodes)));
@@ -42,14 +44,18 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
 
             float3 dampFromCenter = 1-max(0,min(1,(length(nodeBuffer[index])/area)));
             disp = disp * dampFromCenter * dampFromCenter;
-
+			
+			if (length(disp) > 0.5)
+			{ 
+				float outval;
+				disp = disp * damping;
+				dispBuffer.InterlockedExchange((index * 3 + 0) * 4 ,disp.x ,outval);
+				dispBuffer.InterlockedExchange((index * 3 + 1) * 4 ,disp.y ,outval);
+				dispBuffer.InterlockedExchange((index * 3 + 2) * 4 ,disp.z ,outval);
+				//dispBuffer[index] = disp * damping;
+			}
 
         }
-        float outval;
-        disp = disp * damping;
-        dispBuffer.InterlockedExchange((index * 3 + 0) * 4 ,disp.x ,outval);
-        dispBuffer.InterlockedExchange((index * 3 + 1) * 4 ,disp.y ,outval);
-        dispBuffer.InterlockedExchange((index * 3 + 2) * 4 ,disp.z ,outval);
-        //dispBuffer[index] = disp * damping;
+
     }
 };
