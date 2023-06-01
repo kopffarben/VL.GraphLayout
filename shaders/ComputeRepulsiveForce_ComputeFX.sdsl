@@ -3,6 +3,7 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
 {
     float3  area                = float3(10.0, 10.0, 10.0);  
     float   damping             = 0.01;
+	float	minDist             = 0.1;  
 
     StructuredBuffer<float3>    nodeBuffer;
     StructuredBuffer<bool>      enabledBuffer;
@@ -45,7 +46,7 @@ shader ComputeRepulsiveForce_ComputeFX : ComputeShaderBase
             float3 dampFromCenter = 1-max(0,min(1,(length(nodeBuffer[index])/area)));
             disp = disp * dampFromCenter * dampFromCenter;
 			
-			if (length(disp) > 0.5)
+			if (length(disp) > minDist)
 			{ 
 				float outval;
 				disp = disp * damping;

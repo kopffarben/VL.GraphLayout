@@ -26,6 +26,7 @@
               <Pin Id="DD5Ca34J2v3M0hmniAMCjP" Name="Disp Buffer" Kind="InputPin" />
               <Pin Id="DDoaxtUtyQnQO3IcRstfll" Name="Area" Kind="InputPin" />
               <Pin Id="LrSRzRbipkpNYpxudQZRaB" Name="Damping" Kind="InputPin" />
+              <Pin Id="HnRIztYcno4QFUwy6sMVqh" Name="Min Dist" Kind="InputPin" />
               <Pin Id="FYHjs3axY6hL7q8N9tMSR7" Name="Enabled" Kind="InputPin" DefaultValue="True" />
               <Pin Id="HHd3gW1u640PJYNuXPWrHx" Name="Output" Kind="OutputPin" />
             </Node>
@@ -47,7 +48,7 @@
               <Pin Id="DOq3aHU4LKUMtk3dDv4Hql" Name="Thread Group Count" Kind="OutputPin" />
               <Pin Id="Je6StjvKiuaPyWkE2tdGDp" Name="Thread Group Size" Kind="OutputPin" />
             </Node>
-            <Pad Id="VTJF5TkygHCLLJpbq4r8dI" Comment="Enabled" Bounds="1779,544,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <Pad Id="VTJF5TkygHCLLJpbq4r8dI" Comment="Enabled" Bounds="1801,535,35,35" ShowValueBox="true" isIOBox="true" Value="True">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
                 <CategoryReference Kind="Category" Name="Primitive" />
@@ -72,6 +73,7 @@
               <Pin Id="MvvrVtb9PdiQXeiay2WSLm" Name="Disp Buffer" Kind="InputPin" />
               <Pin Id="MkvhgvV0z2dNiEcgh3KBUt" Name="Area" Kind="InputPin" />
               <Pin Id="TWoHZtxrT6eN2lKCtOkTT8" Name="Damping" Kind="InputPin" />
+              <Pin Id="BDal3ZTIl0KNoiOnNu0bpk" Name="Min Dist" Kind="InputPin" />
               <Pin Id="JcqUiQGiJJnP9uKlLYJQPd" Name="Enabled" Kind="InputPin" />
               <Pin Id="MVlVinidm7JQQSEAKfNUW4" Name="Output" Kind="OutputPin" />
             </Node>
@@ -94,7 +96,7 @@
               <Pin Id="SOpyx0iHcZfP44wQZbZ2Dv" Name="Thread Group Size" Kind="OutputPin" />
             </Node>
             <Pad Id="NCXKkeMwuEaP6x30qYg9A9" SlotId="G9LYtxUDCcqMA0mHzh9zE6" Bounds="1923,435" />
-            <Pad Id="SanWc8mXTorPSmUumxSNsh" Comment="Enabled" Bounds="2077,524,35,35" ShowValueBox="true" isIOBox="true" Value="True">
+            <Pad Id="SanWc8mXTorPSmUumxSNsh" Comment="Enabled" Bounds="2110,528,35,35" ShowValueBox="true" isIOBox="true" Value="True">
               <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
                 <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
                 <CategoryReference Kind="Category" Name="Primitive" />
@@ -571,6 +573,8 @@
             <ControlPoint Id="NZukI2TVDvRM0tkA15qjsF" Bounds="285,839" />
             <Pad Id="AkKtckeuFwmO3Lfb4qjmB9" SlotId="CuI4d5RCVw7Po5PLZ3nfAM" Bounds="2584,350" />
             <Pad Id="AFxSI7599QpMK4oeaG2crR" SlotId="UMGDo0Tymx1OUTCs4lSV52" Bounds="2662,395" />
+            <Pad Id="SR9I8yLEpuwLFHOWillbrq" SlotId="BOswN2SuV0wNTPir7mKpDn" Bounds="1789,488" />
+            <Pad Id="JgPJZB9JwvBLqT0WZK6KZp" SlotId="BOswN2SuV0wNTPir7mKpDn" Bounds="2095,488" />
           </Canvas>
           <ProcessDefinition Id="RVdvWw2jzmFQI41wLtI8aS">
             <Fragment Id="HaTbcSHqXbIMcWiaWAn0uN" Patch="F7CgZWUHWFqNT0l6mSvrxP" Enabled="true" />
@@ -782,6 +786,8 @@
           <Link Id="QuTPTzcKSsEOXCNWEHraw4" Ids="NZukI2TVDvRM0tkA15qjsF,C75sTi3iBm2N9R8d8e9t2y" IsHidden="true" />
           <Link Id="Ap2jPLIzLzALqPh3lZzIVh" Ids="AkKtckeuFwmO3Lfb4qjmB9,O6Ip1fDSi62OoNbFORmL1i" />
           <Link Id="SehTv0WjEZcPVoHpiCz459" Ids="AFxSI7599QpMK4oeaG2crR,RFVpwFcHsdnOQ4H6VAbaR4" />
+          <Link Id="MLCsU3Qrq5GMUIbLSLUGEt" Ids="SR9I8yLEpuwLFHOWillbrq,HnRIztYcno4QFUwy6sMVqh" />
+          <Link Id="PQqTwMYv9V9NWVc1er13jF" Ids="JgPJZB9JwvBLqT0WZK6KZp,BDal3ZTIl0KNoiOnNu0bpk" />
         </Patch>
       </Node>
       <!--

@@ -3,6 +3,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
 {
     float3  area        = float3(10.0, 10.0, 10.0);
     float   damping     = 0.01;
+	float	minDist             = 0.1;  
     
     StructuredBuffer<float3>        nodeBuffer; 
     StructuredBuffer<bool>          enabledBuffer;
@@ -40,7 +41,7 @@ shader ComputeAttractiveForce_ComputeFX : ComputeShaderBase, EdgeBufferStruct
                 }
                 disp= weightBuffer[edgeBuffer[index].weightIndex % numWeights] * nEdgeDelta * edgeDist*edgeDist/K * damping;
 				
-				if (length(disp) > 0.5)
+				if (length(disp) > minDist)
 				{
 					InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 0) * 4, disp.x);
 					InterlockedAddFloat(dispBuffer,((uint)(edgeBuffer[index].fromIndex) * 3 + 1) * 4, disp.y);
