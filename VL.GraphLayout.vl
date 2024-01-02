@@ -2187,7 +2187,6 @@
     </Node>
   </Patch>
   <NugetDependency Id="FseP1ngvOXSN0GU93UzWnI" Location="VL.Stride" Version="2022.5.0-0582-g69e6cbc026" />
-  <NugetDependency Id="JfTGNVBvVkHMEu4EK1PPBJ" Location="VL.Fuse" Version="0.2.4" />
   <PlatformDependency Id="H3DK5gHOEYuMS5NMfhWong" Location="../../vvvv/vvvv_gamma_2022.5.0-0514-g836f9e21b4/Stride.Graphics.dll" />
   <PlatformDependency Id="LCif3ifIktfPVx5glcUTSZ" Location="./lib/Release/net6.0/BSplineExtension.dll" />
   <NugetDependency Id="RqIBUM6bghDNkERjkkQ4Nm" Location="VL.Spline" Version="0.0.0" />
